@@ -102,8 +102,17 @@ function btn_compare_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 ImageDataA=getappdata(handles.axes1,'ImageDataA');
 ImageDataB=getappdata(handles.axes2,'ImageDataB');
-value=xor(ImageDataA,ImageDataB)
-imshow(value)
+value=xor(ImageDataA,ImageDataB);
+imshow(value);
+score=0;
+[rows columns]=size(value)
+for i=1:rows
+    for j=1:columns
+        score=score+value(i,j);
+    end
+end
+score=score/(320*280);
+set(handles.txt_score, 'String', score);
 
 function edit1_Callback(hObject, eventdata, handles)
 % hObject    handle to edit1 (see GCBO)
