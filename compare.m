@@ -79,9 +79,10 @@ function btn_loadimg1_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 [filename, pathname]=uigetfile('*.*','Choose an image');
-ImageData1=imread(strcat(pathname,filename));
+ImageData=imread(strcat(pathname,filename));
 %setappdata(handles.figure1,'IrisImg',ImageData);
-axes1=(handles.axes1),imshow(ImageData1)
+axes(handles.axes1);
+imshow(ImageData);
 
 % --- Executes on button press in btn_loadimg2.
 function btn_loadimg2_Callback(hObject, eventdata, handles)
@@ -89,9 +90,10 @@ function btn_loadimg2_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 [filename, pathname]=uigetfile('*.*','Choose an image');
-ImageData2=imread(strcat(pathname,filename));
+ImageData=imread(strcat(pathname,filename));
 %setappdata(handles.figure1,'IrisImg',ImageData);
-axes2=(handles.axes2),imshow(ImageData2)
+axes(handles.axes2);
+imshow(ImageData);
 
 % --- Executes on button press in btn_compare.
 function btn_compare_Callback(hObject, eventdata, handles)
