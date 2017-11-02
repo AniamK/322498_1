@@ -79,10 +79,10 @@ function btn_loadimg1_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 [filename, pathname]=uigetfile('*.*','Choose an image');
-ImageData=imread(strcat(pathname,filename));
-%setappdata(handles.figure1,'IrisImg',ImageData);
+ImageDataA=imread(strcat(pathname,filename));
+setappdata(handles.axes1,'ImageDataA',ImageDataA);
 axes(handles.axes1);
-imshow(ImageData);
+imshow(ImageDataA);
 
 % --- Executes on button press in btn_loadimg2.
 function btn_loadimg2_Callback(hObject, eventdata, handles)
@@ -90,18 +90,20 @@ function btn_loadimg2_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 [filename, pathname]=uigetfile('*.*','Choose an image');
-ImageData=imread(strcat(pathname,filename));
-%setappdata(handles.figure1,'IrisImg',ImageData);
+ImageDataB=imread(strcat(pathname,filename));
+setappdata(handles.axes2,'ImageDataB',ImageDataB);
 axes(handles.axes2);
-imshow(ImageData);
+imshow(ImageDataB);
 
 % --- Executes on button press in btn_compare.
 function btn_compare_Callback(hObject, eventdata, handles)
 % hObject    handle to btn_compare (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
-
+ImageDataA=getappdata(handles.axes1,'ImageDataA');
+ImageDataB=getappdata(handles.axes2,'ImageDataB');
+value=xor(ImageDataA,ImageDataB)
+imshow(value)
 
 function edit1_Callback(hObject, eventdata, handles)
 % hObject    handle to edit1 (see GCBO)
