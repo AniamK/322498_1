@@ -85,7 +85,13 @@ function btn_coarse_Callback(hObject, eventdata, handles)
 % hObject    handle to btn_coarse (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
+imageDataC = getappdata(handles.axes1,'imageData'); %get image from axes1
+level =graythresh(imageDataC); % histogram analysis
+imageDataC=im2bw(imageDataC, level);
+imageDataC = imcomplement(imageDataC);
+imageDataC = imfill(imageDataC,'holes');
+imageDataC = imcomplement(imageDataC);
+imshow(imageDataC);
 
 % --- Executes on button press in btn_loadimg.
 function btn_loadimg_Callback(hObject, eventdata, handles)
@@ -93,6 +99,7 @@ function btn_loadimg_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 [filename, pathname]=uigetfile('*.*','Choose an image');
-ImageData=imread(strcat(pathname,filename));
-%setappdata(handles.figure1,'IrisImg',ImageData);
-axes=(handles.axes1),imshow(ImageData)
+imageData=imread(strcat(pathname,filename));
+setappdata(handles.axes1,'imageData',imageData);
+axes(handles.axes1);
+imshow(imageData);
