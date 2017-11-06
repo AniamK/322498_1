@@ -86,11 +86,7 @@ function btn_coarse_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 imageDataC = getappdata(handles.axes1,'imageData'); %get image from axes1
-level =graythresh(imageDataC); % histogram analysis
-imageDataC=im2bw(imageDataC, level);
-imageDataC = imcomplement(imageDataC);
-imageDataC = imfill(imageDataC,'holes');
-imageDataC = imcomplement(imageDataC);
+[imageDataC,center,radius] = coarse(imageDataC);
 imshow(imageDataC);
 
 % --- Executes on button press in btn_loadimg.
