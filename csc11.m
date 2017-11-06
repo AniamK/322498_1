@@ -22,7 +22,7 @@ function varargout = csc11(varargin)
 
 % Edit the above text to modify the response to help csc11
 
-% Last Modified by GUIDE v2.5 06-Nov-2017 17:49:45
+% Last Modified by GUIDE v2.5 06-Nov-2017 20:29:52
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -92,8 +92,8 @@ function btn_coarse_Callback(hObject, eventdata, handles)
 imageDataC = getappdata(handles.axes1,'imageData'); %get image from axes1
 [imageDataC,center,radius] = coarse(imageDataC);
 imshow(imageDataC);
-set(handles.box_xcp,'string',num2str(center(1)));
-set(handles.box_ycp,'string',num2str(center(2)));
+set(handles.box_xcp,'string',num2str(center(2)));
+set(handles.box_ycp,'string',num2str(center(1)));
 set(handles.box_rcp,'string',num2str(radius));
 
 % --- Executes on button press in btn_loadimg.
@@ -243,3 +243,19 @@ function box_rci_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+% --- Executes on button press in btn_extract.
+function btn_extract_Callback(hObject, eventdata, handles)
+% hObject    handle to btn_extract (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+imageDataE = getappdata(handles.axes1,'imageData'); %get image from axes1
+cp(1)=str2num(char(get(handles.box_xcp,'String')));
+cp(2)=str2num(char(get(handles.box_ycp,'String')));
+cp(3)=str2num(char(get(handles.box_rcp,'String')));
+ci(1)=str2num(char(get(handles.box_xci,'String')));
+ci(2)=str2num(char(get(handles.box_yci,'String')));
+ci(3)=str2num(char(get(handles.box_rci,'String')));
+cp=floor(cp); % floor number
+imageDataE = extract(imageDataE,cp,ci);
