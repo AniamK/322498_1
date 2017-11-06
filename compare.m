@@ -103,9 +103,9 @@ function btn_compare_Callback(hObject, eventdata, handles)
 ImageDataA=getappdata(handles.axes1,'ImageDataA');
 ImageDataB=getappdata(handles.axes2,'ImageDataB');
 value=xor(ImageDataA,ImageDataB);
-imshow(value);
+imwrite(value,'./imageOutput/imageDistance.jpg');
 score=0;
-[rows columns]=size(value)
+[rows, columns]=size(value);
 for i=1:rows
     for j=1:columns
         score=score+value(i,j);
