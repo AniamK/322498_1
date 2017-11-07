@@ -111,7 +111,7 @@ for i=1:rows
         score=score+value(i,j);
     end
 end
-score=score/(320*280);
+score=(score/(320*280))*100;
 set(handles.txt_score, 'String', score);
 
 function edit1_Callback(hObject, eventdata, handles)
