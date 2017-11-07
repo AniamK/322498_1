@@ -6,21 +6,21 @@ function [imageData,center,radius] = coarse(imageData)
 %imshow(imageData);%show image after load image
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %step 1 threshold 3 level
-[rows, columns] = size(imageData);
+%[rows, columns] = size(imageData);
 %imageEmpty = zeros(rows,columns); %use this give me white image
 %imageEmpty = imageData;
-for i=1:rows
-    for j=1:columns
-        if(imageData(i,j)>150)
-            imageData(i,j) = 115;
-        elseif(imageData(i,j)<100)
-            imageData(i,j) = 50;
-        else
-            imageData(i,j)= 85;
-        end
-    end
-end
-imshow(imageData); % show image after threshold 3 level
+%for i=1:rows
+%    for j=1:columns
+%        if(imageData(i,j)>150)
+%            imageData(i,j) = 115;
+%        elseif(imageData(i,j)<100)
+%            imageData(i,j) = 50;
+%        else
+%            imageData(i,j)= 85;
+%        end
+%    end
+%end
+%imshow(imageData); % show image after threshold 3 level
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %step 2 fill NIR 
 imageData = imcomplement(imageData);
