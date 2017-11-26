@@ -92,6 +92,7 @@ function btn_coarse_Callback(hObject, eventdata, handles)
 imageDataC = getappdata(handles.axes1,'imageData'); %get image from axes1
 [imageDataC,center,radius] = coarse(imageDataC);
 imshow(imageDataC);
+imwrite(imageDataC,'imageOutput/imageDataC.jpg');
 set(handles.box_xcp,'string',num2str(center(2)));
 set(handles.box_ycp,'string',num2str(center(1)));
 set(handles.box_rcp,'string',num2str(radius));

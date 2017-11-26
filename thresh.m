@@ -85,4 +85,5 @@ cp=search(I,round(0.1*r),round(0.8*r),ci(1)*scale,ci(2)*scale,'pupil');%Ref:Daug
 cp=cp/scale;
 %displaying the segmented image
 out=drawcircle(pimage,[ci(1),ci(2)],ci(3),600);
-out=drawcircle(out,[cp(1),cp(2)],cp(3),600);
+imwrite(out,'imageOutput/imageDataFine.jpg');
+%out=drawcircle(out,[cp(1),cp(2)],cp(3),600);

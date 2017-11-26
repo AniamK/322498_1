@@ -2,7 +2,7 @@
 cp=[137,153,54];
 ci=[136,154,112];
 %
-imageData = imread('./image/L.jpg');
+imageData = imread('./image/S1001L07.jpg');
 [rows,columns] = size(imageData);
 imagePupil = zeros(rows,columns);
 imageIris = zeros(rows,columns);
@@ -20,8 +20,9 @@ end
 for i=0:ci(3)
     imageIris=drawcircle(imageIris,[ci(1),ci(2)],i,1440);
 end
-imageEmpty = imageIris - imagePupil;
+imageEmpty = imageIris - imagePupil; %imageEmpty is image pf iris location
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%set set other(not iris) locaion in imageData to 256(white color)
 for i=1:rows
     for j=1:columns
         if(imageEmpty(i,j)==0)

@@ -24,6 +24,8 @@ for i=1:rows
     end
 end
 imshow(imageData);
+imwrite(imagePupil,'imageOutput/imagePupil.jpg');
+imwrite(imageIris,'imageOutput/imageIris.jpg');
 imwrite(imageFeature,'imageOutput/imageFeature.jpg');
 imwrite(imageData,'imageOutput/imageData.jpg');
 end
